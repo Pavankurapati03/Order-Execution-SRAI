@@ -1,0 +1,107 @@
+# Semantic Glossary: Mapping technical column names to business-grade terminology
+config_version: "1.0.0"
+
+terms:
+  safety_stock_days:
+    business_label: "Safety Stock Buffer"
+    unit: "days"
+    controllable: true
+    desired_direction: "down"
+    description: "Days of safety inventory held in warehouse distribution centers to protect against unexpected surges."
+    solution_tags: ["E3", "E4", "E8"]
+
+  reorder_point:
+    business_label: "Inventory Reorder Point"
+    unit: "units"
+    controllable: true
+    desired_direction: "up"
+    description: "Minimum inventory threshold that triggers replenishment procurement."
+    solution_tags: ["E3", "E8"]
+
+  lead_time_variance:
+    business_label: "Supplier Lead Time Variance"
+    unit: "days"
+    controllable: true
+    desired_direction: "down"
+    description: "Standard deviation of shipment transit times from order release to dock delivery."
+    solution_tags: ["E4", "E9"]
+
+  carrier_rating:
+    business_label: "Carrier Performance Rating"
+    unit: "score"
+    controllable: true
+    desired_direction: "up"
+    description: "SLA compliance and on-time performance rating of contracted freight logistics carriers."
+    solution_tags: ["E4"]
+
+  vendor_single_source_ratio:
+    business_label: "Single-Source Vendor Reliance"
+    unit: "%"
+    controllable: true
+    desired_direction: "down"
+    description: "Percentage of component volume sourced from a single supplier without a secondary contracted backup."
+    solution_tags: ["E9", "E6"]
+
+  moq_units_ratio:
+    business_label: "Batch Order Sizing Ratio (MOQ)"
+    unit: "ratio"
+    controllable: true
+    desired_direction: "down"
+    description: "Ratio of vendor minimum order quantity constraints to average monthly unit consumption."
+    solution_tags: ["E7", "E8"]
+
+  customs_buffer_days:
+    business_label: "Customs Clearance Contingency Buffer"
+    unit: "days"
+    controllable: true
+    desired_direction: "up"
+    description: "Buffer days built into cross-border fulfillment timelines to absorb import/export inspections."
+    solution_tags: ["E4", "E10"]
+
+  is_preferred_supplier:
+    business_label: "Preferred Supplier Contract Allocation"
+    unit: "%"
+    controllable: true
+    desired_direction: "up"
+    description: "Share of order transactions allocated to audited, master-contracted suppliers."
+    solution_tags: ["E9", "E7"]
+
+  is_po_compliant:
+    business_label: "Purchase Order Compliance Rate"
+    unit: "%"
+    controllable: true
+    desired_direction: "up"
+    description: "Percentage of procurement transactions adhering to corporate approved pricing schedules and catalogs."
+    solution_tags: ["E10"]
+
+  stock_out_flag:
+    business_label: "Stockout Incidence Frequency"
+    unit: "%"
+    controllable: false
+    desired_direction: "down"
+    description: "Occurrence of unfulfilled customer orders due to exhausted distribution inventory."
+    solution_tags: ["E3"]
+
+  lead_time_days:
+    business_label: "Delivery Lead Time"
+    unit: "days"
+    controllable: false
+    desired_direction: "down"
+    description: "Elapsed calendar days between customer purchase order confirmation and final destination delivery."
+    solution_tags: ["E4"]
+
+  margin_leakage:
+    business_label: "Gross Margin Leakage"
+    unit: "%"
+    controllable: false
+    desired_direction: "down"
+    description: "Percentage of gross profit lost to emergency shipping, off-invoice discounts, and fulfillment penalties."
+    solution_tags: ["E5"]
+
+  purchase_cost:
+    business_label: "Procurement Purchase Cost"
+    unit: "$"
+    controllable: false
+    desired_direction: "down"
+    description: "Unit acquisition price paid to suppliers including baseline freight and handling charges."
+    solution_tags: ["E7"]

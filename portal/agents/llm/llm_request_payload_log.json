@@ -1,0 +1,718 @@
+[
+  {
+    "timestamp": "2026-10-29T13:41:33.663960+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T13:41:33.670972+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "missing_slot_direction_phrase",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: missing_slot_direction_phrase. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T13:41:33.722587+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T13:41:33.742337+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "missing_slot_direction_phrase",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: missing_slot_direction_phrase. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T13:41:33.817996+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T13:41:33.838099+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T13:41:33.878297+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:01:05.410125+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "feature_name",
+      "kpi_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {feature_name}, {kpi_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:01:10.083315+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with KPI ({effect_display}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:01:25.418631+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:01:25.504024+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:01:25.705206+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:01:25.723744+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:10:57.892075+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "feature_name",
+      "kpi_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {feature_name}, {kpi_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:11:02.087565+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with KPI ({effect_display}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:11:16.391872+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:11:16.445292+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:11:16.749686+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:11:16.768592+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:17:55.609979+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "feature_name",
+      "kpi_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {feature_name}, {kpi_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:18:00.151968+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with KPI ({effect_display}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:18:15.600739+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:18:15.651975+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:18:15.904937+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:18:15.922607+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:24:26.915625+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "feature_name",
+      "kpi_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {feature_name}, {kpi_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:24:31.850987+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with KPI ({effect_display}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:24:47.996956+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:24:48.057883+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:24:48.346333+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T14:24:48.373297+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T17:07:51.769711+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "feature_name",
+      "kpi_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {feature_name}, {kpi_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T17:07:56.365676+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with KPI ({effect_display}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T17:08:11.496714+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T17:08:11.540321+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T17:08:11.814746+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-29T17:08:11.836077+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T12:59:53.164041+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "feature_name",
+      "kpi_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {feature_name}, {kpi_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:00:04.901643+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "role_phrase"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {role_phrase}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with KPI ({effect_display}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:00:20.031639+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:00:20.073906+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "feature_name"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {feature_name}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} is observed.\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:00:20.350915+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:00:20.376612+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name} ({effect_display}, stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:08.946590+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:08.948786+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "missing_slot_kpi_name",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: missing_slot_kpi_name. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:08.984640+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:08.998061+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "missing_slot_direction_phrase",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: missing_slot_direction_phrase. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:09.031499+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:09.050395+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": true,
+    "failure_reason": "digits_detected",
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:\n\nPREVIOUS ATTEMPT FAILED: digits_detected. Please correct and output ONLY the sentence with all slots and zero digits.",
+    "contains_raw_numbers": false
+  },
+  {
+    "timestamp": "2026-10-30T13:02:09.091349+00:00",
+    "prompt_version": "v2.1",
+    "is_retry": false,
+    "failure_reason": null,
+    "placeholders": [
+      "direction_phrase",
+      "effect_display",
+      "feature_name",
+      "kpi_name",
+      "role_phrase",
+      "stability"
+    ],
+    "model_prompt": "You are an analytical supply chain explanation assistant for an executive dashboard.\nTask: Rewrite the following observation into a concise, professional sentence.\nSTRICT CONSTRAINTS:\n1. You MUST retain all placeholder slots verbatim: {direction_phrase}, {effect_display}, {feature_name}, {kpi_name}, {role_phrase}, {stability}.\n2. You MUST NOT include ANY digits or numbers (0-9) anywhere in your text. All numbers must come from the placeholders.\n3. You MUST NOT use causal words (e.g., causes, caused by, due to, because of, leads to, results in, responsible for, root cause, triggered by).\n4. You MUST NOT give advice or recommendations (e.g., you should, we recommend, must, action item).\n5. Do NOT include URLs or links. Length must be under 280 characters.\n\nTemplate with slots:\n{feature_name} ({role_phrase}) is {direction_phrase} associated with {kpi_name}, contributing an estimated {effect_display} to variance (stability: {stability}).\n\nPolished sentence:",
+    "contains_raw_numbers": false
+  }
+]

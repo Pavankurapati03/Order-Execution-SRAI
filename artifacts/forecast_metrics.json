@@ -1,0 +1,32 @@
+{
+  "sku_target": "SKU0001",
+  "eval_period": "2023-07-01 to 2023-12-31",
+  "baseline_prophet": {
+    "MAE": 475.29,
+    "RMSE": 615.95,
+    "MAPE_percent": 27.25,
+    "WMAPE_percent": 27.79,
+    "Bias": 75.58,
+    "R2_Score": 0.2668,
+    "Total_Actual_Demand": 314700,
+    "Total_Forecasted_Demand": 328606
+  },
+  "enhanced_prophet": {
+    "MAE": 191.17,
+    "RMSE": 260.1,
+    "MAPE_percent": 11.61,
+    "WMAPE_percent": 11.18,
+    "Bias": 94.31,
+    "R2_Score": 0.8693,
+    "Total_Actual_Demand": 314700,
+    "Total_Forecasted_Demand": 332052
+  },
+  "future_90day_summary": {
+    "start_date": "2024-01-01",
+    "end_date": "2024-03-30",
+    "projected_total_units": 112767,
+    "projected_daily_avg": 1252.97,
+    "lower_bound_95": 76905,
+    "upper_bound_95": 148855
+  }
+}

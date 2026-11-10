@@ -1,0 +1,54 @@
+{
+  "prophet": {
+    "MAE": 191.17,
+    "RMSE": 260.1,
+    "MAPE_percent": 11.61,
+    "WMAPE_percent": 11.18,
+    "Bias": 94.31,
+    "R2_Score": 0.8693,
+    "Total_Actual_Demand": 314700,
+    "Total_Forecasted_Demand": 332052
+  },
+  "lstm": {
+    "MAE": 499.64,
+    "RMSE": 741.1,
+    "MAPE_percent": 27.07,
+    "WMAPE_percent": 29.21,
+    "Bias": -28.61,
+    "R2_Score": -0.0614,
+    "Total_Actual_Demand": 314700,
+    "Total_Forecasted_Demand": 309435
+  },
+  "comparison": {
+    "MAE": {
+      "prophet": 191.17,
+      "lstm": 499.64,
+      "winner": "Prophet"
+    },
+    "RMSE": {
+      "prophet": 260.1,
+      "lstm": 741.1,
+      "winner": "Prophet"
+    },
+    "MAPE_percent": {
+      "prophet": 11.61,
+      "lstm": 27.07,
+      "winner": "Prophet"
+    },
+    "WMAPE_percent": {
+      "prophet": 11.18,
+      "lstm": 29.21,
+      "winner": "Prophet"
+    },
+    "Bias": {
+      "prophet": 94.31,
+      "lstm": -28.61,
+      "winner": "LSTM"
+    },
+    "R2_Score": {
+      "prophet": 0.8693,
+      "lstm": -0.0614,
+      "winner": "Prophet"
+    }
+  }
+}

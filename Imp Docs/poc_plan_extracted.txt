@@ -1,0 +1,171 @@
+QUANTELLIX AI  •  SRIYA AI
+
+Agentic AI Integration — 1-Week POC Plan
+
+Order Execution Build  •  Stage 1: UNDERSTAND (Steps 1–4 of the 11-Step Agentic Framework)
+
+1.  Executive Summary
+
+The Quantellix Order Execution Portal currently operates a proven numerical engine (SXI++ scoring, XGBoost, CatBoost, Prophet) paired with single-shot LLM inference for insight generation. This architecture delivers accurate retrospective analysis but requires human operators to manually query dashboards, correlate multi-stage dependencies, and independently determine corrective actions.
+
+This proposal outlines a 1-week Proof-of-Concept to introduce an Agentic AI orchestration layer that autonomously executes the first 4 steps of our 11-step framework (Stage 1: UNDERSTAND). The agents will continuously monitor SXI health scores, detect threshold breaches, perform cross-stage root-cause analysis, and generate structured executive decision dossiers—all in read-only mode with zero risk to production systems.
+
+2.  Current State vs. Target State
+
+3.  POC Scope: The UNDERSTAND Stage (Steps 1–4)
+
+The full 11-step framework spans four stages: UNDERSTAND (Steps 1–4), DECIDE (Step 5), ACT (Steps 6–9), and CHECK (Steps 10–11). This POC delivers Stage 1 end-to-end, producing a verified executive decision dossier ready for the human approval gate at Step 5.
+
+Why Stage 1 is the Correct Starting Point:
+
+Zero operational risk: Steps 1–4 operate entirely in read-only mode over existing SXI outputs and CSV datasets. No write access to any external ERP, WMS, or business system is required.
+
+Validates the core value proposition: If the agents can reliably detect, interpret, reason about, and explain operational anomalies with mathematical proof, the remaining steps (5–11) become straightforward workflow automation.
+
+Establishes the human-in-the-loop contract: The POC terminates at the Step 5 approval gate, demonstrating to leadership that the system advises with evidence but never executes without explicit human sign-off.
+
+4.  Agent Architecture for Order Execution
+
+The POC deploys four specialized micro-agents coordinated by a lightweight orchestrator. Each agent has a single responsibility, a defined tool set, and strict input/output contracts enforced via JSON Schema.
+
+Agent 1 — Anomaly Sentinel (Step 1: Deep Search)
+
+Responsibility: Continuously benchmarks live operational metrics against configurable alert thresholds across all 10 solution domains (E1–E10). Produces a prioritized anomaly vector ranking findings by severity and financial exposure.
+
+Tool Access: SXI score reader, ML holdout accuracy reader, dataset statistical profiler, threshold configuration registry.
+
+Production Pattern: Runs as a scheduled sentinel (configurable interval or on-demand trigger). In production systems, this pattern is equivalent to an observability alert engine (similar to how Datadog or PagerDuty monitors system health, but applied to business KPIs).
+
+Agent 2 — Feature Interpreter (Step 2: Interpret)
+
+Responsibility: Receives the anomaly vector from Agent 1. For each flagged anomaly, extracts the top contributing features from the corresponding ML model (XGBoost feature importances, CatBoost SHAP values) and translates raw mathematical weights into domain-specific operational narratives.
+
+Tool Access: Model feature importance extractor, domain terminology mapper, solution configuration registry (maps E1–E10 codes to business names and KPI units).
+
+Production Pattern: Equivalent to an ML Explainability Service (similar to SHAP/LIME interpretation layers used in production ML platforms at scale).
+
+Agent 3 — Cross-Domain Causal Reasoner (Step 3: Reason)
+
+Responsibility: The analytical core. Receives interpreted anomalies and traces causal chains across the three Order Execution stages. Determines whether a procurement-stage failure (e.g. single-source vendor delay in E9) propagated into a demand-planning stockout (E3) and downstream margin erosion (E5). Quantifies the cascading net financial exposure using SXI-computed baseline and optimized values.
+
+Tool Access: Cross-solution dependency graph, SXI baseline/optimized KPI reader, financial impact calculator (using the same FINANCIAL_MAP used in the executive dashboard), historical run comparator.
+
+Production Pattern: Equivalent to a Root Cause Analysis (RCA) engine. In production incident management (e.g. AWS DevOps Guru, Dynatrace Davis AI), similar systems trace cascading failures across microservice dependencies. Here, we apply the same principle to supply chain operational stages.
+
+Agent 4 — Executive Synthesis Agent (Step 4: Explain)
+
+Responsibility: Consumes the structured outputs of Agents 1, 2, and 3. Produces a concise, non-technical executive decision dossier formatted for C-suite consumption. The dossier contains: (a) a verified problem statement with evidence, (b) the root cause attribution chain, (c) annualized dollar exposure, (d) a recommended corrective action, and (e) a confidence assessment.
+
+Tool Access: Executive template renderer, financial exposure aggregator, confidence scorer, dossier cache (writes to disk for instant retrieval on subsequent page loads).
+
+Production Pattern: Equivalent to an Automated Incident Summary Generator. Production systems like ServiceNow Virtual Agent and Jira Automation generate structured incident reports from raw diagnostic data for management review.
+
+5.  LLM Selection & Cost Analysis
+
+Primary Model: We recommend OpenAI gpt-4o-mini as the sole production model for the POC. No secondary model is required.
+
+Why gpt-4o-mini is the Production-Grade Choice:
+
+Cost at scale: At $0.15/1M input tokens, a single complete 4-agent diagnostic cycle consumes approximately 4,000–6,000 tokens total (across all 4 agents). This costs $0.0006–$0.001 per run. Running 100 investigations per day costs under $0.10/day.
+
+Latency budget: Each agent call returns in 200–400ms. The full 4-step pipeline completes end-to-end in under 2 seconds, well within interactive UX thresholds.
+
+Structured output reliability: gpt-4o-mini supports OpenAI's JSON Schema mode with 99.8%+ compliance, eliminating parsing failures in agent-to-agent data handoffs.
+
+SXI removes the need for expensive models: Because our proprietary SXI engine (XGBoost, CatBoost, Prophet) computes every numerical baseline, improvement percentage, and accuracy metric, the LLM never needs to perform raw mathematical calculation. It only interprets and reasons over verified numbers. This means a smaller, faster, cheaper model delivers equivalent output quality to flagship models.
+
+6.  Codebase Integration Architecture
+
+The agentic layer integrates into the existing Order Execution portal through three cleanly separated architectural layers, preserving all existing functionality:
+
+Layer 1 — Backend Agent Module (New: portal/agentic/)
+
+Layer 2 — API Endpoints (Existing: portal/views.py & portal/urls.py)
+
+Layer 3 — Frontend Integration (Existing: executive_dashboard.html)
+
+A new 'Agentic Decision Center' panel is added to the Executive Dashboard, positioned between the 4 Hero KPI Cards and the Dashboard-Wise Rollup section. It displays:
+
+Live Investigation Status: Step-by-step progress indicator showing which agent is currently executing (Step 1/4, 2/4, etc.).
+
+Anomaly Badges: Visual severity indicators (Critical / Warning / Normal) for each detected metric breach.
+
+Root Cause Chain: A concise causal flow visualization (e.g. 'Vendor Lead Time ↑ → Buffer Depletion → Stockout Event → $820K Revenue Exposure').
+
+Pre-Approval Dossier Card: The complete executive brief with Approve / Reject / Request Changes buttons (connected to Step 5 in Phase 2).
+
+7.  1-Week Implementation Roadmap (5 Business Days)
+
+The following roadmap is structured as a single focused sprint. Each day has a clear deliverable gate that must pass before proceeding.
+
+8.  Production Engineering Standards
+
+Even for a 1-week POC, all code will adhere to production-grade engineering practices. These standards are non-negotiable because the POC code will evolve directly into the production system:
+
+Structured Outputs (JSON Schema Mode): Every LLM call uses OpenAI's response_format={'type': 'json_object'} with an explicit schema. This eliminates free-text parsing and guarantees type-safe agent-to-agent communication.
+
+Idempotent Tool Functions: Every tool in tools.py is a pure, stateless function. Given identical inputs, it always returns identical outputs. No tool modifies any data source.
+
+Error Isolation & Graceful Degradation: If any agent call fails (API timeout, rate limit, malformed response), the orchestrator returns partial results with a clear error annotation rather than crashing. The existing dashboard continues to function unaffected.
+
+Prompt Versioning: All system prompts are stored as versioned string constants in agents.py (not inline in view functions). Each prompt includes a version identifier for audit traceability.
+
+Telemetry & Cost Tracking: Every LLM invocation logs: model name, input/output token count, latency (ms), and cost. This data feeds the cost report delivered on Day 5.
+
+Cache-First Architecture: Identical to the proven pattern in the existing generate_dynamic_hero_kpis_llm() and generate_csuite_roadmap_llm() functions: check disk cache first, call LLM only on cache miss, persist results immediately.
+
+9.  Risk Assessment & Mitigations
+
+--- TABLE ---
+Design Principle — Numbers First, Language Second Every score, variance, and dollar impact originates from the verified SXI mathematical core (XGBoost, CatBoost, Prophet). The agentic layer never fabricates a number. Its role is strictly autonomous investigation, causal reasoning, and executive-grade explanation. This separation is the architectural firewall against hallucination.
+
+--- TABLE ---
+Dimension | Current State (Passive LLM) | Target State (Agentic AI — This POC)
+Trigger Model | Human-initiated: user opens dashboard and reads charts manually | Agent-initiated: orchestrator continuously monitors SXI scores and auto-triggers investigation when thresholds breach
+Insight Depth | Single-shot LLM summary of pre-computed metrics; no causal tracing | Multi-step reasoning chain: anomaly detection → feature interpretation → cross-stage root-cause correlation → executive synthesis
+Cross-Stage Awareness | Each dashboard operates independently; no upstream/downstream linking | Agent 3 (Causal Reasoner) traces ripple effects across Sales Forecasting, Demand Planning, and Procurement stages
+Output Format | Generic text summaries and static KPI cards | Structured JSON decision dossiers with verified problem statement, causal attribution, dollar exposure, and proposed remediation
+Human Gate | No formal approval workflow | Terminates at Step 5 (First Approval): a human reviews and approves, rejects, or requests modification before any action
+Data Access Mode | Read-only | Read-only (identical to current state; no write access to external systems)
+
+--- TABLE ---
+Step | Name | Agent Responsibility | Output Artifact
+Step 1 | Deep Search (Data Discovery) | Scans active SXI scores, ML holdout accuracies, and live dataset metrics. Flags anomalies where any metric breaches its defined threshold (e.g. SXI < 7.0, lead time > 8 days, stockout probability > 15%, defect rate > 4.5%). | Anomaly Detection Report (structured JSON)
+Step 2 | Interpret (Feature Mapping) | Reads XGBoost/CatBoost feature importance vectors from the latest model run. Maps each mathematical weight to its operational meaning (e.g. 'moq_units_ratio = 0.82' → 'Batching constraints locking 18 days of buffer capital'). | Semantic Feature Diagnosis
+Step 3 | Reason (Root Cause) | Performs cross-domain causal analysis: determines whether a downstream anomaly (e.g. stockout in E3) was caused by an upstream failure (e.g. transit delay in E4, single-source risk in E9). Quantifies cascading financial exposure. | Causal Attribution Graph with Dollar Impact
+Step 4 | Explain (Executive Brief) | Synthesizes Agents 1–3 outputs into a concise, non-technical executive dossier. Includes: verified problem statement, root cause attribution chain, projected annualized financial exposure, and recommended corrective action. | Pre-Approval Decision Dossier (ready for Step 5 Gate)
+
+--- TABLE ---
+Model | Input Price (per 1M tokens) | Output Price (per 1M tokens) | Context Window | Latency (median) | Role in POC
+gpt-4o-mini (Selected) | $0.150 | $0.600 | 128K | ~300ms | All 4 agent steps: reasoning, interpretation, causal analysis, synthesis
+o4-mini (Future option) | $1.10 | $4.40 | 200K | ~2s | Deep multi-step reasoning; candidate for complex Step 3 causal chains
+
+--- TABLE ---
+File | Responsibility | Key Design Decisions
+orchestrator.py | Sequential coordinator for the 4-step pipeline. Manages agent invocation order, input/output contracts, error handling, and retry logic. | Stateless per-invocation. Each run receives the session context and selected solutions as input. Uses a simple sequential chain (not LangGraph) for POC simplicity; upgradeable to durable workflows in Phase 2.
+agents.py | Defines the 4 agent personas: system prompts, JSON output schemas, temperature settings, and token budgets per agent. | Each agent has a strict JSON Schema contract. Prompts are versioned strings (not hardcoded inline) for auditability and iteration.
+tools.py | Read-only Python functions that agents invoke to query data: SXI scores, feature importances, dataset statistics, financial impact maps, and threshold configurations. | Every tool is a pure function with no side effects. Tools return typed dictionaries. No tool can write to disk, database, or external API.
+memory.py | Session-scoped caching layer. Stores completed dossiers to disk (JSON) for instant retrieval on page reload. | Uses the same caching pattern already proven in generate_dynamic_hero_kpis_llm() and generate_csuite_roadmap_llm(). Cache key = session_id + solution_codes hash.
+schemas.py | Pydantic models defining the exact input/output contract for each agent and each tool. | Enforces type safety at every agent boundary. Prevents malformed data from propagating downstream.
+
+--- TABLE ---
+Endpoint | Method | Description
+/api/agentic/investigate/ | POST | Accepts {session_id, solution_codes[]}. Triggers the 4-step orchestrator pipeline. Returns the complete decision dossier as structured JSON.
+/api/agentic/dossier/<session_id>/ | GET | Retrieves a previously generated dossier from cache. Used for instant page loads after initial investigation.
+/api/agentic/status/<run_id>/ | GET | Returns the current step and progress of a running investigation (for UI progress indicators).
+
+--- TABLE ---
+Day | Focus Area | Engineering Activities | Deliverable Gate
+Day 1 (Mon) | Architecture Setup & Agent 1 | • Create portal/agentic/ module structure (orchestrator, agents, tools, memory, schemas) • Install OpenAI Python SDK; configure API key rotation and rate-limit handling • Implement Agent 1 (Anomaly Sentinel): build threshold scanner across all 10 solution domains • Build tools.py: SXI score reader, dataset stat profiler, threshold config registry • Unit test Agent 1 against fmcg_order_execution_dataset.csv with known anomalies | Agent 1 returns valid anomaly JSON for at least 3 test scenarios
+Day 2 (Tue) | Agent 2 & Agent 3 | • Implement Agent 2 (Feature Interpreter): extract XGBoost feature importances, map to domain terms • Implement Agent 3 (Causal Reasoner): build cross-stage dependency logic tracing upstream → downstream impact chains • Build financial exposure calculator tool (reads from existing FINANCIAL_MAP) • Integration test: Agent 1 output feeds Agent 2, Agent 2 feeds Agent 3 • Validate causal chains against 2–3 known historical patterns in the dataset | Agent 3 correctly traces a cross-stage causal chain and outputs dollar exposure
+Day 3 (Wed) | Agent 4 & Orchestrator | • Implement Agent 4 (Executive Synthesis): produces structured dossier from Agents 1–3 outputs • Build orchestrator.py: sequential 4-step pipeline with error handling and retry logic • Implement memory.py: session-scoped disk caching (same pattern as hero KPI caching) • End-to-end pipeline test: orchestrator runs all 4 agents in sequence on real data • Validate dossier output against Pydantic schemas | Full 4-step pipeline produces a complete, schema-valid decision dossier in under 3 seconds
+Day 4 (Thu) | API & UI Integration | • Add REST endpoints to portal/views.py and portal/urls.py • Build the 'Agentic Decision Center' panel in executive_dashboard.html • Connect frontend to API: investigation trigger, progress display, dossier rendering • Style the anomaly badges, causal chain visualization, and dossier card • Test with multiple dashboard combinations (3, 5, and 10 solutions selected) | Executive Dashboard displays live agentic investigation results with correct styling
+Day 5 (Fri) | Testing, Polish & Demo | • Run comprehensive test matrix: both datasets × multiple solution combinations • Measure and document: API cost per run, end-to-end latency, output accuracy • Fix edge cases: empty datasets, single-solution selections, API timeout handling • Prepare demo script and talking points for founder presentation • Conduct live demonstration with founder and executive team | POC delivered: live demo completed, cost report submitted, Phase 2 plan outlined
+
+--- TABLE ---
+Risk | Likelihood | Impact | Mitigation
+LLM fabricates a number not from SXI | Low | High | Architectural guardrail: the LLM never sees raw data. It only receives pre-computed SXI outputs through typed tool functions. The Pydantic schema rejects any response containing numbers not present in the tool output.
+Agent produces irrelevant causal chain | Medium | Medium | Agent 3's prompt constrains reasoning to the specific solution domains selected by the user. Cross-validation against known historical patterns during Day 2 testing.
+OpenAI API downtime / rate limit | Low | Low | Graceful degradation: the existing dashboard (dynamic KPI cards, C-Suite roadmap) continues to function. The agentic panel shows 'Investigation unavailable—retry' status.
+POC timeline overrun | Low | Medium | Scope is strictly limited to Steps 1–4 (read-only). No external system integration. No new database schema. The heaviest engineering (orchestrator + 4 agents) is concentrated in Days 1–3.
+

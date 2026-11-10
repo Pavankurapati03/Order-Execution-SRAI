@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantellix.AI | E-Commerce Order Execution Assistant</title>
+  <link rel="stylesheet" href="/static/css/chatbot.css?v=13.0">
+  <style>
+    /* Drawer Menu Direct Override Styles */
+    .menu-drawer {
+      width: 480px !important;
+      max-width: 92vw !important;
+      background: #ffffff !important;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    }
+    .menu-title-text {
+      font-size: 17px !important;
+      font-weight: 800 !important;
+      color: #0f172a !important;
+    }
+    .menu-group-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 14px 14px 8px 14px !important;
+      font-size: 16.5px !important;
+      font-weight: 800 !important;
+      color: #0f172a !important;
+      letter-spacing: -0.01em !important;
+      user-select: none !important;
+    }
+    .menu-stage-section {
+      display: flex !important;
+      flex-direction: column !important;
+      margin-top: 8px !important;
+      padding-bottom: 4px !important;
+    }
+    .menu-stage-title-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 8px 14px !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #1e293b !important;
+      text-decoration: none !important;
+      border-radius: 8px !important;
+      transition: all 0.15s ease !important;
+      cursor: pointer !important;
+    }
+    .menu-stage-title-link:hover {
+      background-color: #f1f5f9 !important;
+      color: #2563eb !important;
+    }
+    .menu-target-link {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 7px 12px 7px 24px !important;
+      border-radius: 6px !important;
+      font-size: 13.5px !important;
+      font-weight: 500 !important;
+      color: #475569 !important;
+      text-decoration: none !important;
+      transition: all 0.15s ease !important;
+      gap: 10px !important;
+      box-sizing: border-box !important;
+      cursor: pointer !important;
+    }
+    .menu-target-link:hover {
+      background-color: #f8fafc !important;
+      color: #2563eb !important;
+    }
+    .menu-target-link.active {
+      background-color: #eef2ff !important;
+      color: #2563eb !important;
+      font-weight: 600 !important;
+    }
+    .menu-target-name-wrap {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 8px !important;
+      min-width: 0 !important;
+      flex: 1 !important;
+    }
+    .menu-target-name {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      color: inherit !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+    }
+    .menu-target-price {
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      color: #2563eb !important;
+      letter-spacing: 0.1px !important;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+    }
+    .menu-dot {
+      width: 7px !important;
+      height: 7px !important;
+      border-radius: 50% !important;
+      background-color: #10b981 !important;
+      display: inline-block !important;
+      flex-shrink: 0 !important;
+    }
+    .menu-nav-item {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 10px 14px !important;
+      border-radius: 8px !important;
+      font-size: 14.5px !important;
+      font-weight: 500 !important;
+      color: #334155 !important;
+      text-decoration: none !important;
+      transition: all 0.15s ease !important;
+    }
+    .menu-nav-item:hover {
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+    .menu-nav-item.active {
+      background-color: #eef2ff !important;
+      color: #4f46e5 !important;
+      font-weight: 600 !important;
+    }
+    .footer-brand-title {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #2563eb !important;
+    }
+    .footer-brand-sub {
+      font-size: 12.5px !important;
+      color: #94a3b8 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header (White background) -->
+  <header class="quantellix-header">
+    <div class="header-left">
+      <button type="button" id="btnViewDashboards" class="btn-header-dashboards" onclick="toggleDashboardsMenu()" title="View Dashboards Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        View Dashboards
+      </button>
+    </div>
+
+    <div class="header-center">
+      <a href="/portal/marketplace" class="header-logo-link" title="Quantellix Marketplace">
+        <img src="/static/images/quantellix-logo-dark.png?v=2.0" alt="Quantellix" class="header-logo-img" style="filter: brightness(0) invert(1); height: 48px; object-fit: contain; display: block;">
+      </a>
+    </div>
+
+    <div class="header-right">
+      <button id="btnRestart" class="btn-header-restart" title="Start a fresh chat session">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1 4 1 10 7 10"></polyline>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+        </svg>
+        Start New / Restart
+      </button>
+
+      <a href="/portal/marketplace" class="btn-header-exit" title="Exit app back to marketplace">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        Exit App
+      </a>
+
+      <button id="btnThemeToggle" class="btn-theme-toggle" title="Toggle Dark/Light Mode">
+        🌙
+      </button>
+    </div>
+  </header>
+
+  <!-- Dashboard Left Sliding Menu Drawer & Backdrop -->
+  <div id="dashboardsBackdrop" class="menu-drawer-backdrop" onclick="toggleDashboardsMenu()"></div>
+
+  <aside id="dashboardsMenuDrawer" class="menu-drawer" aria-label="Dashboards Menu">
+    <!-- Top Header of Drawer -->
+    <div class="menu-drawer-header">
+      <div class="menu-title-wrap">
+        <svg class="menu-globe-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span class="menu-title-text">Menu</span>
+      </div>
+      <button type="button" class="menu-drawer-close" onclick="toggleDashboardsMenu()" title="Close Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Scrollable Content of Drawer -->
+    <div class="menu-drawer-content">
+      <!-- Top Demo item -->
+      <a href="/portal/marketplace" class="menu-nav-item active">
+        <span class="menu-dot"></span>
+        <span class="menu-item-name">Demo UI core analysis</span>
+      </a>
+
+      <!-- Horizontal Divider Line -->
+      <hr class="menu-divider">
+
+      <!-- Order Execution Section -->
+      <div class="menu-group-header">
+        <span class="menu-dot"></span>
+        <span class="menu-group-title">Order Execution</span>
+      </div>
+
+      <!-- 1. Sales Forecasting -->
+      <div class="menu-stage-section">
+        <a href="/portal/marketplace/sales_forecasting" class="menu-stage-title-link" title="View Sales Forecasting Executive Dashboard">
+          <span>1. Sales Forecasting</span>
+        </a>
+        <a href="/portal/marketplace/sales_forecasting?target=target1" class="menu-target-link" title="Forecast/Predict Sales (Quantity)">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Forecast/Predict Sales (Quantity)</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/sales_forecasting?target=target2" class="menu-target-link" title="Minimize Actual vs Predicted Sales Difference (%)">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Minimize Actual vs Predicted Sales Difference (%)</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+      </div>
+
+      <!-- 2. Demand Planning -->
+      <div class="menu-stage-section">
+        <a href="/portal/marketplace/demand_planning" class="menu-stage-title-link" title="View Demand Planning Executive Dashboard">
+          <span>2. Demand Planning</span>
+        </a>
+        <a href="/portal/marketplace/demand_planning?target=target1" class="menu-target-link" title="Reduce Stockouts">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Stockouts</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/demand_planning?target=target2" class="menu-target-link" title="Reduce Delivery Lead Time">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Delivery Lead Time</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/demand_planning?target=target3" class="menu-target-link" title="Reduce Margin Leakage">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Margin Leakage</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/demand_planning?target=target4" class="menu-target-link" title="Reduce Inbound Defect Risk">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Inbound Defect Risk</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+      </div>
+
+      <!-- 3. Procurement -->
+      <div class="menu-stage-section">
+        <a href="/portal/marketplace/procurement" class="menu-stage-title-link" title="View Procurement Executive Dashboard">
+          <span>3. Procurement</span>
+        </a>
+        <a href="/portal/marketplace/procurement?target=target1" class="menu-target-link" title="Reduce Purchase Cost">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Purchase Cost</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/procurement?target=target2" class="menu-target-link" title="Reduce Inventory Stockout Risk">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Inventory Stockout Risk</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/procurement?target=target3" class="menu-target-link" title="Reduce Single-Source Supply Risk">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Single-Source Supply Risk</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+        <a href="/portal/marketplace/procurement?target=target4" class="menu-target-link" title="Reduce Non-Compliant PO Risk Rate">
+          <div class="menu-target-name-wrap">
+            <span class="menu-dot"></span>
+            <span class="menu-target-name">Reduce Non-Compliant PO Risk Rate</span>
+          </div>
+          <span class="menu-target-price">$1000/Month</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Fixed Bottom Action Button -->
+    <div style="padding: 14px 20px; border-top: 1px solid #e2e8f0; background: #ffffff; flex-shrink: 0;">
+      <a href="/portal/marketplace" style="display: block; width: 100%; background: #071426; color: #ffffff; text-align: center; font-size: 13.5px; font-weight: 800; padding: 12px 16px; border-radius: 8px; text-decoration: none; transition: background 0.2s ease;">
+        Open full Marketplace view
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Container -->
+  <main class="app-layout">
+    <!-- Left Chat Area -->
+    <section class="chat-section">
+            <div class="chat-welcome-banner">
+        <div class="bot-avatar-box">
+          <img src="/static/images/quantellix-q-icon.png?v=4.0" alt="Quantellix" style="width: 38px; height: 38px; object-fit: contain;">
+        </div>
+        <div class="welcome-texts">
+          <h2>Welcome to Quantellix.AI</h2>
+          <p>Your personal multi-modal assistant.</p>
+          {% if chosen_solution_name %}
+          <div style="margin-top: 8px; display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 99, 235, 0.12); border: 1px solid #93c5fd; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; color: #1d4ed8;">
+            <span>🎯 Target Solution:</span>
+            <span>{{ chosen_solution_code }} &bull; {{ chosen_solution_name }}</span>
+            <span style="font-weight: 500; opacity: 0.85;">({{ chosen_solution_stage }})</span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="chat-messages-container" id="chatMessages">
+        {% for msg in chat_history %}
+          {% if msg.sender == "bot" %}
+            <div class="msg-row bot">
+              {% if msg.type == "license_card" %}
+                <div class="license-card">
+                  <div class="license-header">
+                    <span class="license-icon">⚡</span>
+                    <span class="license-title">{{ msg.title }}</span>
+                  </div>
+                  <div class="license-plan">{{ msg.plan }}</div>
+                  <ul class="license-notices">
+                    {% if msg.used_notice %}<li>{{ msg.used_notice }}</li>{% endif %}
+                    {% if msg.credits_notice %}<li>{{ msg.credits_notice }}</li>{% endif %}
+                    {% if msg.terms_notice %}<li>{{ msg.terms_notice }}</li>{% endif %}
+                  </ul>
+                  <div class="license-footer">
+                    <span>🛡️</span>
+                    <span>{{ msg.validity }}</span>
+                  </div>
+                </div>
+              {% elif msg.type == "pipeline_card" %}
+                <div class="msg-bubble" style="background: rgba(37, 99, 235, 0.04); border: 1px solid rgba(37, 99, 235, 0.18);">
+                  <div style="font-weight: 700; color: #1e40af; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#2563eb;"></span>
+                    <span>Data Pipeline Execution</span>
+                  </div>
+                  <div style="font-size: 13px; color: #16a34a; margin-bottom: 4px;">✅ <b>Step 1/3:</b> Ingested <b>{{ "{:,}".format(msg.rows) }} rows</b> ({{ msg.cols }} cols)</div>
+                  <div style="font-size: 13px; color: #16a34a; margin-bottom: 4px;">✅ <b>Step 2/3:</b> Data preprocessing is completed.</div>
+                  <div style="font-size: 13px; color: #16a34a;">✅ <b>Step 3/3:</b> EDA report is ready, you can download it.</div>
+                </div>
+              {% elif msg.type == "sxi_card" %}
+                <div class="sxi-completion-card">
+                  <div class="sxi-card-header">
+                    <div class="sxi-header-badge">
+                      <span class="sxi-pulse-dot"></span>
+                      <span>SXI Decision Intelligence Completed</span>
+                    </div>
+                    <div class="sxi-credits-pill">
+                      <span>💳</span> 1 Credit Used &bull; <strong>{{ msg.remaining_credits|default(33) }} credits left</strong>
+                    </div>
+                  </div>
+
+                  <div class="sxi-sol-bar">
+                    <span class="sxi-sol-code">{{ msg.solution_code|default('E8') }}</span>
+                    <span class="sxi-sol-name">{{ msg.kpi_name|default('Reduce Inventory Stockout Risk') }}</span>
+                  </div>
+
+                  <div class="sxi-kpi-grid">
+                    <div class="sxi-kpi-card">
+                      <div class="sxi-kpi-label">SXI Composite Score</div>
+                      <div class="sxi-kpi-value-row">
+                        <span class="sxi-kpi-main">{{ msg.current_sxi_score|default('5.8') }} &rarr; {{ msg.target_sxi_score|default('8.4') }}</span>
+                        <span class="sxi-kpi-unit">/10</span>
+                      </div>
+                      <div class="sxi-kpi-sub positive">Optimized Target</div>
+                    </div>
+
+                    <div class="sxi-kpi-card">
+                      <div class="sxi-kpi-label">Target KPI Optimization</div>
+                      <div class="sxi-kpi-value-row">
+                        <span class="sxi-kpi-main">{{ msg.baseline_kpi|default('20.0%') }} &rarr; {{ msg.optimized_kpi|default('4.6%') }}</span>
+                      </div>
+                      <div class="sxi-kpi-sub positive">{{ msg.improvement_pct|default('-15.4%') }} Improvement</div>
+                    </div>
+
+                    <div class="sxi-kpi-card">
+                      <div class="sxi-kpi-label">Holdout Test Accuracy</div>
+                      <div class="sxi-kpi-value-row">
+                        <span class="sxi-kpi-main">{{ msg.accuracy_pct|default('98.2') }}%</span>
+                      </div>
+                      <div class="sxi-kpi-sub">{{ msg.model_type|default('XGBoost Ensemble') }}</div>
+                    </div>
+                  </div>
+
+                  <div class="sxi-actions-row">
+                    <a href="{{ msg.executive_dashboard_url|default(msg.dashboard_url)|default('/portal/executive_dashboard') }}" target="_blank" class="sxi-btn-primary">
+                      <span>🚀 Open Executive Dashboard</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="{{ msg.solution_dashboard_url|default(msg.dashboard_url)|default('/portal/marketplace') }}" target="_blank" class="sxi-btn-secondary" style="border:1px solid #cbd5e1; color:#0f172a; font-weight:600;">
+                      <span>📊 View Solution Dashboard</span>
+                    </a>
+                    <a href="{{ msg.download_csv_url|default('#') }}" download class="sxi-btn-secondary">
+                      <span>📥 Download CSV Results</span>
+                    </a>
+                  </div>
+
+                  <details class="sxi-details-accordion">
+                    <summary class="sxi-details-summary">
+                      <span>⚙️ View Ensemble Weights, Rules & Interventions</span>
+                      <span class="sxi-summary-chevron">▼</span>
+                    </summary>
+                    <div class="sxi-details-content">
+                      {% if msg.top_weights %}
+                      <div class="sxi-detail-block">
+                        <div class="sxi-detail-title">⚖️ Consensus Feature Weights (5-Model Consensus)</div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                          {% for w in msg.top_weights %}
+                          <div class="sxi-weight-bar-row">
+                            <span class="sxi-weight-feat">{{ w.Feature }}</span>
+                            <span class="sxi-weight-pct">{{ w.Composite_Weight }}% consensus</span>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      {% endif %}
+
+                      {% if msg.rules %}
+                      <div class="sxi-detail-block">
+                        <div class="sxi-detail-title">🌲 Explainable Decision Tree Rules (A* Path Search)</div>
+                        <ul class="sxi-rules-list">
+                          {% for r in msg.rules %}
+                          <li><b>Rule {{ loop.index }}:</b> {{ r.condition }} &rarr; <i>{{ r.impact }}</i> <span style="color:#10b981;font-weight:700;">({{ r.confidence }})</span></li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      {% endif %}
+
+                      {% if msg.interventions %}
+                      <div class="sxi-detail-block">
+                        <div class="sxi-detail-title">🛠️ 3-Horizon Actionable Interventions</div>
+                        <div class="sxi-horizons-grid">
+                          <div class="sxi-horizon-box">
+                            <span class="sxi-horizon-tag h1">⚡ Horizon 1 (0–30 Days)</span>
+                            <div class="sxi-horizon-text">
+                              {% if msg.interventions.immediate is iterable and msg.interventions.immediate is not string %}
+                                {{ msg.interventions.immediate|join('<br>&bull; ')|safe }}
+                              {% else %}
+                                {{ msg.interventions.immediate }}
+                              {% endif %}
+                            </div>
+                          </div>
+                          <div class="sxi-horizon-box">
+                            <span class="sxi-horizon-tag h2">🔄 Horizon 2 (30–90 Days)</span>
+                            <div class="sxi-horizon-text">
+                              {% if msg.interventions.mid_term is iterable and msg.interventions.mid_term is not string %}
+                                {{ msg.interventions.mid_term|join('<br>&bull; ')|safe }}
+                              {% else %}
+                                {{ msg.interventions.mid_term }}
+                              {% endif %}
+                            </div>
+                          </div>
+                          <div class="sxi-horizon-box">
+                            <span class="sxi-horizon-tag h3">🏗️ Horizon 3 (90+ Days)</span>
+                            <div class="sxi-horizon-text">
+                              {% if msg.interventions.long_term is iterable and msg.interventions.long_term is not string %}
+                                {{ msg.interventions.long_term|join('<br>&bull; ')|safe }}
+                              {% else %}
+                                {{ msg.interventions.long_term }}
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </details>
+                </div>
+              {% else %}
+                <div class="msg-bubble">
+                  <div>{{ msg.text|replace('\n', '<br>')|safe }}</div>
+                  {% if msg.buttons %}
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+                      {% for btn in msg.buttons %}
+                        <button type="button" class="chat-choice-btn" onclick="sendChoiceMessage('{{ btn }}')">{{ btn }}</button>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          {% else %}
+            <div class="msg-row user">
+              <div class="msg-avatar">👤</div>
+              <div class="msg-bubble">
+                <p>{{ msg.text }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="chat-input-wrapper">
+        <form class="chat-input-form" id="chatForm">
+          <button type="button" class="input-icon-btn" id="btnAttachFile" title="Attach file or dataset">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+            </svg>
+          </button>
+          <input type="file" id="fileAttachInput" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt,.parquet">
+          <input type="text" id="chatInput" class="chat-text-input" placeholder="Type a message or question..." autocomplete="off">
+          <button type="submit" id="btnSend" class="btn-send-msg" title="Send message">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar-section">
+      <div>
+        <div class="sidebar-title">Analytics & Exploration</div>
+        <div class="sidebar-actions-group">
+          <div id="btnViewEDA" class="{% if has_eda %}side-btn-active{% else %}side-btn-disabled{% endif %}" title="{% if has_eda %}Download Automated EDA Report as PDF{% else %}Locked until dataset upload and EDA completion{% endif %}" data-session-id="{{ session_id }}">
+            <div class="side-btn-left">
+              <span class="side-btn-icon">📊</span>
+              <span>View EDA</span>
+            </div>
+            <span class="side-btn-badge" id="badgeViewEDA">{% if has_eda %}Ready{% else %}Locked{% endif %}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Dataset Section (Right below View EDA) -->
+      <div>
+        <div class="sidebar-title">Master Dataset</div>
+        <div class="sidebar-actions-group">
+          <!-- When Master Dataset is Ready -->
+          <div id="masterReadyBox" style="{% if has_master %}display: block;{% else %}display: none;{% endif %} background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 13px; font-weight: 600; color: #10b981;">✅ Master Dataset Ready!</span>
+              <span class="side-btn-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">Ready</span>
+            </div>
+            <div id="mlStatusBadge" style="padding: 8px 10px; background: rgba(16, 185, 129, 0.08); border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #10b981;">
+              <p style="margin: 0; color: #10b981; font-size: 11px; font-weight: 600;">
+                🤖 ML Analysis Engine Active
+              </p>
+            </div>
+            <a id="btnDownloadMasterActive" href="{{ master_download_url|default('/api/master/download/' ~ session_id) }}" download="master_dataset.csv" class="side-btn-active" style="text-decoration: none; justify-content: center; gap: 8px; font-size: 13px; padding: 10px 14px;" title="Download Preprocessed & Normalized Master Dataset (CSV)">
+              <span>📥 Download CSV</span>
+            </a>
+          </div>
+
+          <!-- When Master Dataset is Locked -->
+          <div id="masterLockedBtn" class="side-btn-disabled" style="{% if has_master %}display: none;{% else %}display: flex;{% endif %}" title="Locked until dataset upload and preprocessing completion">
+            <div class="side-btn-left">
+              <span class="side-btn-icon">📁</span>
+              <span>Master Dataset</span>
+            </div>
+            <span class="side-btn-badge" id="badgeMaster">Locked</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sidebar-title">{% if chosen_solutions_count > 1 %}Intelligence Dashboards{% else %}Intelligence Dashboard{% endif %}</div>
+        <div class="sidebar-actions-group" id="dashboardsActionsGroup" style="display: flex; flex-direction: column; gap: 8px;">
+          {% if chosen_solutions_count > 1 or has_executive_dashboard %}
+            <div id="btnExecutiveDashboard_executive"
+                 class="btn-executive-dash-item {% if executive_ready %}side-btn-active{% else %}side-btn-disabled{% endif %}"
+                 data-sol-code="EXEC"
+                 data-sol-slug="executive"
+                 data-dash-url="{{ executive_url|default('/portal/dashboard/' ~ session_id ~ '?solution=executive') }}"
+                 title="{% if executive_ready %}Open Executive Summary Dashboard{% else %}Locked until analysis is executed{% endif %}"
+                 style="cursor: {% if executive_ready %}pointer{% else %}default{% endif %}; border: 1.5px solid {% if executive_ready %}#f59e0b{% else %}#e2e8f0{% endif %}; background: {% if executive_ready %}#fffbeb{% else %}#f8fafc{% endif %};"
+                 {% if executive_ready %}onclick="window.open('{{ executive_url|default('/portal/dashboard/' ~ session_id ~ '?solution=executive') }}', '_blank')"{% endif %}>
+              <div class="side-btn-left">
+                <span class="side-btn-icon">👑</span>
+                <span class="dashboardBtnName" style="font-weight: 800; color: #92400e;">Executive Summary</span>
+              </div>
+              <span class="side-btn-badge badgeExecutiveDashboard" style="{% if executive_ready %}background-color: #f59e0b; color: #ffffff; font-weight: 800;{% endif %}">{% if executive_ready %}Open{% else %}Locked{% endif %}</span>
+            </div>
+          {% endif %}
+          {% if chosen_solutions_list and chosen_solutions_list|length > 0 %}
+            {% for sol in chosen_solutions_list %}
+              <div id="btnExecutiveDashboard_{{ sol.slug }}"
+                   class="btn-executive-dash-item {% if sol.is_ready %}side-btn-active{% else %}side-btn-disabled{% endif %}"
+                   data-sol-code="{{ sol.code }}"
+                   data-sol-slug="{{ sol.slug }}"
+                   data-dash-url="{{ sol.dashboard_url }}"
+                   title="{% if sol.is_ready %}Open {{ sol.code }} • {{ sol.name }} Dashboard{% else %}Locked until analysis is executed{% endif %}"
+                   style="cursor: {% if sol.is_ready %}pointer{% else %}default{% endif %};"
+                   {% if sol.is_ready %}onclick="window.open('{{ sol.dashboard_url }}', '_blank')"{% endif %}>
+                <div class="side-btn-left">
+                  <span class="side-btn-icon">📈</span>
+                  <span class="dashboardBtnName">{{ sol.name }} Dashboard</span>
+                </div>
+                <span class="side-btn-badge badgeExecutiveDashboard" style="{% if sol.is_ready %}background-color: #10b981; color: #ffffff; font-weight: 700;{% endif %}">{% if sol.is_ready %}Open{% else %}Locked{% endif %}</span>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div id="btnExecutiveDashboard" class="side-btn-disabled btn-executive-dash-item" title="Locked until analysis is executed">
+              <div class="side-btn-left">
+                <span class="side-btn-icon">📈</span>
+                <span id="dashboardBtnName">{{ chosen_solution_name|default('Reduce Delivery Lead Time') }} Dashboard</span>
+              </div>
+              <span class="side-btn-badge badgeExecutiveDashboard" id="badgeExecutiveDashboard">Locked</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Recent Files Section -->
+      <div class="recent-files-box">
+        <div class="recent-files-header">
+          <span class="recent-files-title">Recent Files</span>
+          <span id="recentFilesBadge" style="font-size: 11px; color: var(--text-muted);">0 Active</span>
+        </div>
+        <div id="recentFilesContainer">
+          <div class="no-files-notice" id="noFilesNotice">
+            No files added
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    window.QUANT_SOLUTION_CODE = "{{ chosen_solution_code|default('E8') }}";
+    window.QUANT_SOLUTION_NAME = "{{ chosen_solution_name|default('Reduce Inventory Stockout Risk') }}";
+    window.QUANT_TARGET_COL = "{{ chosen_target_column|default('s2_order_validation_outcome') }}";
+    window.QUANT_SOLUTIONS_COUNT = {{ chosen_solutions_count|default(1) }};
+  </script>
+  <script src="/static/js/chatbot_page.js?v=17.0"></script>
+</body>
+</html>

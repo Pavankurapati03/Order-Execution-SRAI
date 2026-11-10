@@ -1,0 +1,37 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Large Datasets (> 100MB exceeds GitHub limit)
+*.csv
+!Datasets/fmcg_order_execution_dataset.csv
+!Datasets/E-commerce_order_execution_dataset.csv
+fmcg_sales_3years_1M_rows.csv
+
+# Uploads & Temp Media
+portal/uploads/*
+!portal/uploads/.gitkeep
+.tempmediaStorage/
+.user_uploaded/
+scratch/
+*.db
+
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

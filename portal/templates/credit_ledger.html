@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Available credits | Quantellix AI</title>
+  <link rel="icon" href="/static/images/quantellix-logo-dark.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --teal: #0f766e;
+      --teal-hover: #115e59;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #e8eef7 0%, var(--bg) 40%);
+      color: var(--ink);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navbar */
+    .header-navbar {
+      background: #091428;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-credits {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    .nav-credits strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .nav-link {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      max-width: 1320px;
+      margin: 32px auto 60px;
+      padding: 0 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 42px 52px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 26px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 0 0 10px 0;
+      font-size: 14.5px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* Section Headings */
+    h2.section-heading {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 28px 0 12px 0;
+      letter-spacing: -0.01em;
+    }
+
+    /* Clean Key-Value & Data Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+    }
+    table.data-table th,
+    table.data-table td {
+      text-align: left;
+      padding: 12px 8px 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+    table.data-table th {
+      color: #64748b;
+      font-weight: 600;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    table.data-table td {
+      color: #1e293b;
+    }
+
+    .empty-txt {
+      color: #64748b;
+      font-size: 14px;
+      margin: 0 0 20px 0;
+    }
+
+    /* Action Buttons */
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-buy-green {
+      background: var(--teal);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-buy-green:hover {
+      background: var(--teal-hover);
+    }
+    .btn-secondary-pill {
+      background: #e2e8f0;
+      color: #1e293b;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-secondary-pill:hover {
+      background: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="header-navbar">
+    <a href="/portal/marketplace" class="logo-link" title="Quantellix Marketplace">
+      <img src="/static/images/quantellix-logo-dark.png?v=2.0" alt="Quantellix" class="logo-img" />
+    </a>
+    <nav class="nav-right">
+      <span class="nav-credits">Credits: <strong>{{ credits_balance }}</strong></span>
+      <a href="/portal/marketplace" class="nav-link">Marketplace</a>
+      <a href="/portal/account" class="nav-link">My account</a>
+      <a href="/portal/credits" class="nav-link">Buy credits</a>
+      <a href="/portal/terms" class="nav-link">Credit Terms</a>
+      <a href="/portal/logout" class="nav-btn-logout" style="background: #dc2626; color: #ffffff !important; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);" onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">Sign Out</a>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <div class="card">
+      <h1>Available credits</h1>
+      <p class="sub">
+        1 credit = 1 solution. Earliest-expiring credits are used first.
+        A credit is deducted only when dashboards are created successfully.
+        Credits expire {{ validity_days or 30 }} days after purchase.
+      </p>
+
+      <p class="sub" style="margin-top: 8px;">
+        You have <strong>{{ available_credits }}</strong> available credit{{ 's' if available_credits != 1 else '' }}{% if earliest_expiry_str and earliest_expiry_str != '—' %} (earliest expiry {{ earliest_expiry_str }}){% endif %}.
+      </p>
+
+      <!-- By purchase / expiry -->
+      <h2 class="section-heading">By purchase / expiry</h2>
+      {% if lots and lots|length > 0 %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Purchased</th>
+            <th style="width: 25%;">Pack</th>
+            <th style="width: 25%;">Expires</th>
+            <th style="width: 25%;">Remaining</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lot in lots %}
+          <tr>
+            <td>{{ lot.purchased_str }}</td>
+            <td>pack of {{ lot.pack_qty or lot.remaining }}</td>
+            <td>{{ lot.expires_str }}</td>
+            <td><strong>{{ lot.remaining }}</strong> left</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="empty-txt">No unused credits right now.</p>
+      {% endif %}
+
+      <!-- Used -->
+      <h2 class="section-heading">Used</h2>
+      {% if used_credits and used_credits|length > 0 %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 50%;">Solution</th>
+            <th style="width: 50%;">Consumed</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in used_credits %}
+          <tr>
+            <td>{{ row.solution_name }}</td>
+            <td>{{ row.consumed_date_str or row.consumed_str }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="empty-txt">No credits used yet.</p>
+      {% endif %}
+
+      <!-- Bottom Action Buttons -->
+      <div class="actions-bar">
+        <a class="btn-buy-green" href="/portal/credits">Buy credits</a>
+        <a class="btn-secondary-pill" href="/portal/marketplace">Back to Quantellix.AI</a>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

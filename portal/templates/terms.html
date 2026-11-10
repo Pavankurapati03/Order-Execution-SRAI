@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Credit Terms &amp; Conditions | Quantellix AI</title>
+  <link rel="icon" href="/static/images/quantellix-logo-dark.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --teal: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #e8eef7 0%, var(--bg) 40%);
+      color: var(--ink);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navbar */
+    .header-navbar {
+      background: #091428;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-credits {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    .nav-credits strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .nav-link {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    .nav-link.active {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      max-width: 1320px;
+      margin: 32px auto 60px;
+      padding: 0 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 42px 52px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 26px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .terms-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 24px 0 8px 0;
+    }
+    p {
+      margin: 0 0 12px 0;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    /* Packs Table */
+    .packs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px 0;
+      text-align: left;
+    }
+    .packs-table th, 
+    .packs-table td {
+      padding: 12px 14px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 14px;
+    }
+    .packs-table th {
+      color: #475569;
+      font-weight: 700;
+      background: #fafafa;
+    }
+    .packs-table tbody tr:last-child td {
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .packs-table td strong {
+      color: #0f172a;
+    }
+
+    /* Action Buttons */
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-buy-green {
+      background: var(--teal);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+    .btn-buy-green:hover {
+      background: #115e59;
+    }
+    .btn-secondary-pill {
+      background: #e2e8f0;
+      color: #1e293b;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+    .btn-secondary-pill:hover {
+      background: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="header-navbar">
+    <a href="/portal/marketplace" class="logo-link" title="Quantellix Marketplace">
+      <img src="/static/images/quantellix-logo-dark.png?v=2.0" alt="Quantellix" class="logo-img" />
+    </a>
+    <nav class="nav-right">
+      <span class="nav-credits">Credits: <strong>{{ credits_balance }}</strong></span>
+      <a href="/portal/marketplace" class="nav-link">Marketplace</a>
+      <a href="/portal/account" class="nav-link">My account</a>
+      <a href="/portal/credits" class="nav-link">Buy credits</a>
+      <a href="/portal/terms" class="nav-link active">Credit Terms</a>
+      <a href="/portal/logout" class="nav-btn-logout" style="background: #dc2626; color: #ffffff !important; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);" onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">Sign Out</a>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <div class="card">
+      <h1>Quantellix.AI — Credit Terms &amp; Conditions</h1>
+      <div class="terms-meta">
+        <strong>Version:</strong> 2026-03-04<br />
+        <strong>Effective Date:</strong> 4 March 2026
+      </div>
+
+      <p>These Credit Terms &amp; Conditions ("Credit Terms") govern the purchase and use of Credits on the Quantellix.AI platform ("Platform").</p>
+      <p>By purchasing or using Credits, you acknowledge that you have read, understood, and agreed to these Credit Terms.</p>
+
+      <h2>1. Credits</h2>
+      <p>A Credit entitles the account holder to perform one Solution Run on the Quantellix.AI Platform.</p>
+      <p>Each Credit may be used to run any eligible Quantellix.AI business solution available through the Platform.</p>
+      <p>Credits are not assigned to a specific Solution and may be used across the available Solutions during their applicable validity period.</p>
+
+      <h2>2. Solution Runs</h2>
+      <p>A Solution Run means one execution of an eligible Quantellix.AI business solution using one Credit.</p>
+      <p>One Credit is consumed for each Solution Run.</p>
+      <p>Quantellix.AI may make multiple business solutions available through the Platform. The Solutions available to a user may change from time to time.</p>
+
+      <h2>3. Credit Validity</h2>
+      <p>Purchased Credits are valid for 30 days from the date of purchase.</p>
+      <p>The validity period begins on the date the Credits are purchased and ends at the end of the applicable 30-day period, based on Quantellix.AI server time.</p>
+      <p>Users are responsible for using their Credits before the applicable expiration date.</p>
+
+      <h2>4. Expiration of Credits</h2>
+      <p>Any unused Credits remaining after the applicable validity period will expire.</p>
+      <p>Expired Credits cannot be used to perform a Solution Run.</p>
+      <p>The validity period of Credits cannot be extended by restarting a Solution, switching between Solutions, performing a Restart on the Platform, or otherwise using the Platform.</p>
+      <p>Unused Credits after expiration are forfeited, except where otherwise required by applicable law.</p>
+
+      <h2>5. Non-Transferability</h2>
+      <p>Credits are assigned to the account through which they were purchased.</p>
+      <p>Credits are non-transferable and may not be sold, assigned, exchanged, shared, or otherwise transferred to another account or person.</p>
+      <p>Credits may only be used through the account to which they were issued.</p>
+
+      <h2>6. Use Across Solutions</h2>
+      <p>Credits are fungible across the Quantellix.AI solution catalogue during their validity period.</p>
+      <p>A Credit may therefore be used for any eligible Solution available through the Platform.</p>
+      <p>Using a Credit for one Solution does not affect the ability to use the remaining Credits for another eligible Solution during the applicable validity period.</p>
+
+      <h2>7. Recommended Solution</h2>
+      <p>Quantellix.AI recommends running Forecast Sales Demand (E1) first.</p>
+      <p>This recommendation is provided for guidance only. Users may choose another eligible Solution available through the Platform.</p>
+
+      <h2>8. Restarts and Switching Solutions</h2>
+      <p>Restarting a Solution, using Restart on the Platform, or switching from one Solution to another does not reset, pause, or extend the validity period of Credits.</p>
+      <p>The original purchase date remains the basis for determining the expiration of the Credits.</p>
+
+      <h2>9. Credit Balance</h2>
+      <p>The available Credit balance may be displayed through the Platform.</p>
+      <p>Users are responsible for monitoring their Credit balance and using Credits before they expire.</p>
+      <p>Quantellix.AI may provide information through the Platform regarding available Credits and their applicable validity period.</p>
+
+      <h2>10. Changes to Available Solutions</h2>
+      <p>Quantellix.AI may modify, update, add, or remove Solutions available through the Platform from time to time.</p>
+      <p>Changes to the available Solutions do not extend or reset the validity period of previously purchased Credits.</p>
+
+      <h2>11. Applicable Law</h2>
+      <p>Nothing in these Credit Terms is intended to exclude or restrict any rights or protections that cannot legally be excluded or restricted under applicable law.</p>
+      <p>Where applicable law provides additional rights relating to Credits, those rights will continue to apply.</p>
+
+      <h2>12. Acceptance of the Credit Terms</h2>
+      <p>By purchasing or using Credits, you confirm that you have had an opportunity to review these Credit Terms and agree to be bound by them.</p>
+      <p>If you do not agree to these Credit Terms, you should not purchase or use Credits.</p>
+
+      <h2>Current credit packs</h2>
+      <p style="color: var(--muted); margin-bottom: 12px;">List prices and bundle discounts (separate from Credit validity).</p>
+
+      <table class="packs-table">
+        <thead>
+          <tr>
+            <th>Pack</th>
+            <th>List</th>
+            <th>Discount</th>
+            <th>You pay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1 credit</strong></td>
+            <td>$1000.00</td>
+            <td>0%</td>
+            <td><strong>$1000.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>3 credits</strong></td>
+            <td>$3000.00</td>
+            <td>5%</td>
+            <td><strong>$2850.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>5 credits</strong></td>
+            <td>$5000.00</td>
+            <td>10%</td>
+            <td><strong>$4500.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>10 credits</strong></td>
+            <td>$10000.00</td>
+            <td>15%</td>
+            <td><strong>$8500.00</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="actions">
+        <a class="btn-buy-green" href="/portal/credits">Buy credits</a>
+        <a class="btn-secondary-pill" href="/portal/marketplace">Back to Quantellix.AI</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+# Production-Grade Multi-Test Sentinel Anomaly Configuration
+# Replaces simple single-fence comparisons with a 4-Tier Test Engine:
+#   Test A: Target-based SLA breaches (Headline alerts)
+#   Test B: Temporal drift & regression (Recent window vs prior reference window)
+#   Test C: Segment Hotspots (Supplier/DC/Category sub-segment deviations)
+#   Test D: Tail Risk (Distribution insights, capped at Medium)
+
+config_version: "2.1.0"
+strategy: "adaptive_statistical"
+
+# Backward compatibility statistical fences
+statistical_fences:
+  percentile_upper: 90.0
+  percentile_lower: 10.0
+  z_score_cutoff: 2.0
+  iqr_fence_multiplier: 1.5
+  min_samples_required: 50
+
+# 1. Test A: Target-based SLA & Performance Standards
+# Configured targets represent enterprise SLA or contractual commitments.
+sla_targets:
+  E1: { target: 90.0, unit: "%", target_type: "continuous", bad_direction: "lower" }     # Sales Forecast Accuracy
+  E2: { target: 10.0, unit: "%", target_type: "continuous", bad_direction: "higher" }    # Forecast Error Variance
+  E3: { target: 0.02, unit: "rate", target_type: "binary_rate", bad_direction: "higher" } # Stockout Rate (max 2%)
+  E4: { target: 7.0, unit: "days", target_type: "continuous", bad_direction: "higher" }   # Delivery Lead Time SLA (7 days)
+  E5: { target: 200.0, unit: "$", target_type: "continuous", bad_direction: "higher" }   # Margin Leakage per transaction
+  E6: { target: 0.03, unit: "rate", target_type: "binary_rate", bad_direction: "higher" } # Defect Rate (max 3%)
+  E7: { target: 25.0, unit: "$", target_type: "continuous", bad_direction: "higher" }    # Benchmark Purchase Cost
+  E8: { target: 0.05, unit: "rate", target_type: "binary_rate", bad_direction: "higher" } # Reorder Emergency Rate (max 5%)
+  E9: { target: 0.85, unit: "rate", target_type: "binary_rate", bad_direction: "lower" }  # Preferred Supplier Rate (min 85%)
+  E10: { target: 0.95, unit: "rate", target_type: "binary_rate", bad_direction: "lower" } # PO Compliance Rate (min 95%)
+
+# 2. Test B: Temporal Window Drift & Regression Configuration
+temporal_window:
+  recent_days: 30                  # Last 30 days
+  reference_days: 90               # Prior 90 days reference baseline
+  significance_alpha: 0.05         # Mann-Whitney / Welch's p-value threshold
+  min_effect_size_pct: 10.0        # Minimum percentage shift to trigger regression alert
+  min_cohens_d: 0.20               # Minimum Cohen's d effect size to prevent noise on 50k rows
+  use_mann_whitney_for_skewed: true
+  exclude_incomplete_orders: true  # Exclude censored/pending orders from recent window
+
+# 3. Test C: Segment Hotspot Analysis
+segment_hotspots:
+  dimensions: ["supplier_id", "dc_id", "category"]
+  min_segment_samples: 30          # Minimum sample size within segment to avoid small-sample noise
+  deviation_factor: 1.30           # 30% worse than fleet average qualifies as a hotspot
+  fdr_alpha: 0.05                  # Benjamini-Hochberg False Discovery Rate correction
+  max_cardinality_per_dimension: 50 # Cap scanned cardinality to top 50 segments
+
+# 4. Test D: Tail Risk (Distribution Insights)
+tail_risk:
+  percentile_upper: 90.0           # 90th percentile tail
+  percentile_lower: 10.0           # 10th percentile tail
+  max_severity: "medium"           # Tail risk alone is a distribution insight, capped at Medium
+
+# 5. Metric Directionality & Column Mapping
+metric_direction:
+  E1: { target_kpi: "sales_quantity", bad_direction: "lower", target_type: "continuous", unit: "units" }
+  E2: { target_kpi: "sales_forecast_error", bad_direction: "higher", target_type: "continuous", unit: "%" }
+  E3: { target_kpi: "stock_out_flag", bad_direction: "higher", target_type: "binary_rate", unit: "rate" }
+  E4: { target_kpi: "lead_time_days", bad_direction: "higher", target_type: "continuous", unit: "days" }
+  E5: { target_kpi: "margin_leakage", bad_direction: "higher", target_type: "continuous", unit: "USD" }
+  E6: { target_kpi: "is_high_defect_risk", bad_direction: "higher", target_type: "binary_rate", unit: "rate" }
+  E7: { target_kpi: "purchase_cost", bad_direction: "higher", target_type: "continuous", unit: "USD" }
+  E8: { target_kpi: "is_reorder_required", bad_direction: "higher", target_type: "binary_rate", unit: "rate" }
+  E9: { target_kpi: "is_preferred_supplier", bad_direction: "lower", target_type: "binary_rate", unit: "rate" }
+  E10: { target_kpi: "is_po_compliant", bad_direction: "lower", target_type: "binary_rate", unit: "rate" }
+
+# 6. Model Trust & Reliability Floors
+model_reliability:
+  min_test_rows: 100
+  min_positive_test_cases: 10      # Required for imbalanced binary targets
+  classification:
+    min_balanced_accuracy: 65.0    # Protects against naive majority-class guessing
+    min_auc: 0.65
+    min_f1: 0.60
+    min_lift_over_majority: 1.15   # Must beat naive constant prediction by at least 15%
+  regression:
+    min_r2: 0.30
+    max_r2_suspicious: 0.98        # R2 > 0.98 on noisy operational data flags leakage suspicion
+    max_wmape: 35.0
+  max_feature_concentration: 0.60  # Feature concentration triggers warning; does NOT mark untrusted unless corr > 0.95
+  leakage_correlation_threshold: 0.95
+
+# 7. Data Quality & Minimum Sample Hygiene
+data_quality:
+  max_missing_pct: 10.0
+  min_sample_size: 50              # Below 50 rows flags small_sample
+
+# 8. Severity Threshold Factors (Relative distance from target or reference)
+severity:
+  critical_factor: 1.50            # >= 50% beyond SLA target
+  high_factor: 1.20                # >= 20% beyond SLA target
+  medium_factor: 1.00              # At or beyond SLA target
+
+# 9. Stage 2: Feature Interpreter Configuration
+interpreter:
+  min_importance_threshold: 0.05       # Minimum relative feature importance (5%) to report
+  top_drivers_limit: 5                 # Maximum number of global drivers to present
+  stability_min_agreement: 0.60       # Minimum ensemble agreement for high stability
+  leakage_correlation_threshold: 0.85  # Absolute correlation with target flagging leakage suspect
+  cross_solution_shared_threshold: 2   # Appears in >= 2 solutions to qualify as shared driver
+  unexplained_residual_cap_pct: 50.0   # If residual > 50% of gap, flag as partially unexplained
+

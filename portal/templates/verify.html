@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>License Activation Portal | Quantellix AI</title>
+<link rel="icon" href="/static/images/quantellix-logo-dark.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  /* Outside Page Background */
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #eef4f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    color: #1a1a1a;
+  }
+
+  /* Centered Card Container */
+  .card-container {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* The Elevated Distinct Card */
+  .auth-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem 2.25rem;
+    box-shadow: 0 16px 48px -8px rgba(15, 80, 60, 0.10), 0 4px 16px rgba(0, 0, 0, 0.04);
+    border: 1px solid #d8e5dd;
+  }
+  
+  /* Top Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #e1f5ee;
+    color: #0F6E56;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.2px;
+  }
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    background: #10b981;
+    border-radius: 50%;
+  }
+
+  /* Headings */
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0c1a14;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.45rem;
+  }
+  .subtitle {
+    font-size: 13.5px;
+    color: #52665d;
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+  }
+
+  /* Info Callout Banner */
+  .info-callout {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 9px;
+    padding: 11px 14px;
+    font-size: 12.5px;
+    color: #1e40af;
+    line-height: 1.45;
+    margin-bottom: 1.6rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .info-callout .info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 700;
+    color: #2563eb;
+    margin-top: 1px;
+  }
+  .info-callout a {
+    color: #1d4ed8;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .info-callout a:hover {
+    color: #1e40af;
+  }
+
+  /* Form Elements */
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+  input[type=email], input[type=text] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #d3ded7;
+    border-radius: 9px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #0f172a;
+    background: #fdfefe;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  }
+  input[type=text] {
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+  input::placeholder {
+    color: #94a3b8;
+    letter-spacing: normal;
+  }
+  input:focus {
+    outline: none;
+    border-color: #0F6E56;
+    background: #ffffff;
+    box-shadow: 0 0 0 3.5px rgba(15, 110, 86, 0.12);
+  }
+
+  /* Primary Action Button */
+  .btn {
+    width: 100%;
+    padding: 0.92rem;
+    background: #0F6E56;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    font-size: 14.5px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(15, 110, 86, 0.20);
+  }
+  .btn:hover {
+    background: #085041;
+    box-shadow: 0 6px 16px rgba(15, 110, 86, 0.28);
+  }
+  .btn:active {
+    transform: scale(0.99);
+  }
+
+  /* Error Box */
+  .error-msg {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+
+  /* Don't have a key box inside card */
+  .dont-have-card {
+    background: #f3f9f5;
+    border: 1.5px solid #c8ead8;
+    border-radius: 12px;
+    padding: 1.4rem 1.35rem;
+    margin-top: 1.6rem;
+  }
+  .dont-have-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #085041;
+    margin-bottom: 0.45rem;
+  }
+  .dont-have-card p {
+    font-size: 12.5px;
+    color: #4b6357;
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+  }
+  .btn-outline {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    color: #0F6E56;
+    border: 1.5px solid #0F6E56;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    margin-bottom: 0.65rem;
+  }
+  .btn-outline:hover {
+    background: #e1f5ee;
+    color: #085041;
+  }
+
+  /* Footer */
+  .footer-txt {
+    font-size: 12px;
+    color: #788c81;
+    text-align: center;
+    margin-top: 1.75rem;
+  }
+  .footer-txt a {
+    color: #0F6E56;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-txt a:hover {
+    text-decoration: underline;
+  }
+
+  /* =========================================================================
+     SUCCESS VIEW (MATCHING REFERENCE IMAGE 2 EXACTLY)
+     ========================================================================= */
+  .success-wrap {
+    text-align: center;
+  }
+  .verified-icon-box {
+    width: 48px;
+    height: 48px;
+    background: #10b981;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+  }
+  .verified-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #085041;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .welcome-txt {
+    font-size: 13.5px;
+    color: #4b5563;
+    margin-bottom: 14px;
+  }
+  .welcome-txt strong {
+    color: #0f172a;
+  }
+  .key-pill {
+    display: inline-block;
+    background: #e1f5ee;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #085041;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    font-family: monospace;
+    border: 1px solid #c8ead8;
+  }
+  .time-hero {
+    background: #f4faf7;
+    border-radius: 12px;
+    padding: 1.4rem 1rem;
+    margin-bottom: 14px;
+    border: 1.5px solid #c8ead8;
+    text-align: center;
+  }
+  .time-hero-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+  .time-hero-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0F6E56;
+    margin-bottom: 4px;
+  }
+  .time-hero-sub {
+    font-size: 12.5px;
+    color: #556960;
+  }
+  .act-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: table;
+    margin: 0 0 16px 0;
+    text-align: left;
+  }
+  .act-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+  .act-val {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .verified-note {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    text-align: left;
+  }
+  .verified-note strong {
+    color: #0f172a;
+  }
+  .proceed-btn {
+    display: block;
+    width: 100%;
+    padding: 0.95rem;
+    background: #0F6E56;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s;
+    box-shadow: 0 4px 12px rgba(15, 110, 86, 0.20);
+    margin-bottom: 10px;
+  }
+  .proceed-btn:hover {
+    background: #085041;
+  }
+  .btn-signout {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background: #ffffff;
+    color: #0F6E56;
+    border: 1.5px solid #0F6E56;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-signout:hover {
+    background: #e1f5ee;
+  }
+</style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="auth-card">
+
+    {% if success %}
+    <div class="success-wrap">
+      <div class="verified-icon-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 class="verified-title">License Verified!</h1>
+      <p class="welcome-txt">Welcome to Sriya.AI, <strong>{{ user_email }}</strong></p>
+      
+      <div class="key-pill">{{ license_key }}</div>
+      
+      <div class="time-hero">
+        <div class="time-hero-label">LICENSE TERM</div>
+        <div class="time-hero-value">Lifetime</div>
+        <div class="time-hero-sub">Does not expire &mdash; buy credits to run solutions</div>
+      </div>
+
+      <div class="act-box">
+        <div class="act-label">ACTIVATED ON</div>
+        <div class="act-val">{{ activated_on_str or '03 Oct 2026' }}</div>
+      </div>
+
+      <p class="verified-note">
+        Signed in. The Marketplace opens in <strong>Quantellix.AI</strong> on this computer, where your analyses run and your data stays.
+      </p>
+
+      <a href="/portal/marketplace" class="proceed-btn">Continue in Quantellix.AI -&gt;</a>
+      <a href="/portal/logout" class="btn-signout">&#128273; Sign out license</a>
+    </div>
+
+    {% else %}
+    <div class="badge"><span class="badge-dot"></span> License Activation Portal</div>
+    <h1>Activate your license</h1>
+    <p class="subtitle">Enter your email and license key. Lifetime licenses never expire; older annual keys still work.</p>
+
+    <div class="info-callout">
+      <span class="info-icon">&#8505;</span>
+      <span>Don't have a key yet? <a href="/portal/open-account">Open a free lifetime account</a> &mdash; then buy solution credits on the Marketplace.</span>
+    </div>
+
+    {% if error or error_msg %}
+    <div class="error-msg">
+      <span>&#10005;</span>
+      <span>{{ error or error_msg }}</span>
+    </div>
+    {% endif %}
+
+    <form method="POST" action="/license">
+      <label for="email">YOUR EMAIL ADDRESS</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required value="{{ prefill_email or email or '' }}" autocomplete="email">
+
+      <label for="key">LICENSE KEY</label>
+      <input type="text" id="key" name="key" placeholder="SRAI-XXXX-XXXX-XXXX" required value="{{ prefill_key or key or '' }}" autocomplete="off">
+
+      <button type="submit" class="btn">Verify &amp; Activate &rarr;</button>
+    </form>
+
+    <div class="dont-have-card">
+      <h3>Don't have a key?</h3>
+      <p>Open a free lifetime account &mdash; save the activation key it shows you. After activating, buy solution credits (1 / 3 / 5 / 10 packs).</p>
+      <a href="/portal/open-account" class="btn-outline">Open free account &rarr;</a>
+      <a href="/portal/credits" class="btn-outline" style="margin-bottom:0;">Buy credits &rarr;</a>
+    </div>
+
+    <p class="footer-txt">Need help? Contact <a href="mailto:support@quantellix.ai">support@quantellix.ai</a></p>
+    {% endif %}
+
+  </div>
+</div>
+
+</body>
+</html>

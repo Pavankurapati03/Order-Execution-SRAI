@@ -1,0 +1,68 @@
+# Default Financial Assumptions & Dollar Exposure Valuation Rules
+config_version: "1.0.0"
+
+# Operational Enterprise Baseline Defaults (Used if customer does not override)
+defaults:
+  average_order_value_usd: 125.0
+  annual_order_volume: 240000
+  holding_cost_rate_annual: 0.22         # 22% of inventory value per year
+  daily_holding_cost_per_sku_usd: 3.80
+  scrap_warranty_cost_per_defect_usd: 450.0
+  expedited_shipping_penalty_per_order_usd: 65.0
+  billing_discrepancy_leakage_rate: 0.018 # 1.8% of invoiced volume
+
+# Benchmark Annual Impact Ceilings (Corresponds to existing FINANCIAL_MAP in views.py)
+solution_financial_map:
+  E1:
+    annual_usd: 620000.0
+    reason: "recovered unfulfilled sales demand through accurate replenishment"
+    overlap_group: "sales_demand"
+  E2:
+    annual_usd: 485000.0
+    reason: "eliminated buffer inventory waste and bullwhip distortion"
+    overlap_group: "sales_demand"
+  E3:
+    annual_usd: 820000.0
+    reason: "recovered stockout revenue & freed locked working capital"
+    overlap_group: "fulfillment_stockouts"
+  E4:
+    annual_usd: 210000.0
+    reason: "downstream distribution buffer holding cost reduction"
+    overlap_group: "fulfillment_lead_time"
+  E5:
+    annual_usd: 252000.0
+    reason: "eliminated off-invoice deductions and logistics margin leakage"
+    overlap_group: "financial_margin"
+  E6:
+    annual_usd: 340000.0
+    reason: "prevented component scrap and warranty failure chargebacks"
+    overlap_group: "procurement_quality"
+  E7:
+    annual_usd: 380000.0
+    reason: "consolidated volume procurement savings and vendor pricing tiers"
+    overlap_group: "procurement_cost"
+  E8:
+    annual_usd: 290000.0
+    reason: "avoided emergency air-freight logistics and stockout reorder fees"
+    overlap_group: "fulfillment_stockouts"
+  E9:
+    annual_usd: 450000.0
+    reason: "single-source supply chain disruption avoidance insurance value"
+    overlap_group: "procurement_risk"
+  E10:
+    annual_usd: 240000.0
+    reason: "recovered billing discrepancies and non-compliant invoice leakage"
+    overlap_group: "financial_margin"
+
+# Overlap Deduplication Rules
+# When multiple solutions in the same group are executed, deduct overlap to avoid double-counting benefits
+overlap_deduplication:
+  fulfillment_stockouts:
+    solutions: ["E3", "E8"]
+    discount_factor: 0.35 # 35% overlap between E3 lost sales and E8 expedited reorders
+  sales_demand:
+    solutions: ["E1", "E2"]
+    discount_factor: 0.40 # 40% overlap between forecast accuracy and forecast error
+  financial_margin:
+    solutions: ["E5", "E10"]
+    discount_factor: 0.25 # 25% overlap between margin leakage and billing compliance

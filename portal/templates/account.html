@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My account | Quantellix AI</title>
+  <link rel="icon" href="/static/images/quantellix-logo-dark.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --yellow-bg: #fffdf0;
+      --yellow-border: #fef08a;
+      --yellow-label: #a16207;
+      --teal: #0f766e;
+      --teal-hover: #115e59;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #e8eef7 0%, var(--bg) 40%);
+      color: var(--ink);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navbar */
+    .header-navbar {
+      background: #091428;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-credits {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    .nav-credits strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .nav-link {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    .nav-link.active {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      max-width: 1320px;
+      margin: 32px auto 60px;
+      padding: 0 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 42px 52px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 26px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 0 0 26px 0;
+      font-size: 14.5px;
+      font-weight: 400;
+    }
+
+    /* Top 4 Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 860px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 520px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .metric-card {
+      background: var(--yellow-bg);
+      border: 1.5px solid var(--yellow-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 94px;
+    }
+    .metric-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--yellow-label);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .metric-value {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      word-break: break-all;
+      line-height: 1.25;
+    }
+    .metric-value.code-font {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: -0.01em;
+    }
+    .metric-value.large-num {
+      font-size: 20px;
+    }
+
+    /* Section Headings */
+    h2.section-heading {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 28px 0 12px 0;
+      letter-spacing: -0.01em;
+    }
+
+    /* Clean Key-Value & Data Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+    }
+    table.data-table th,
+    table.data-table td {
+      text-align: left;
+      padding: 12px 8px 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+    table.data-table th {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    table.data-table.kv-table th {
+      width: 220px;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    table.data-table.kv-table td {
+      color: #334155;
+    }
+    table.data-table code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #0f172a;
+      font-weight: 500;
+      font-size: 13.5px;
+    }
+
+    .empty-txt {
+      color: #64748b;
+      font-size: 14px;
+      margin: 0 0 20px 0;
+    }
+
+    /* Action Buttons */
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-buy-green {
+      background: var(--teal);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-buy-green:hover {
+      background: var(--teal-hover);
+    }
+    .btn-secondary-pill {
+      background: #e2e8f0;
+      color: #1e293b;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-secondary-pill:hover {
+      background: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="header-navbar">
+    <a href="/portal/marketplace" class="logo-link" title="Quantellix Marketplace">
+      <img src="/static/images/quantellix-logo-dark.png?v=2.0" alt="Quantellix" class="logo-img" />
+    </a>
+    <nav class="nav-right">
+      <span class="nav-credits">Credits: <strong>{{ credits_balance }}</strong></span>
+      <a href="/portal/marketplace" class="nav-link">Marketplace</a>
+      <a href="/portal/account" class="nav-link active">My account</a>
+      <a href="/portal/credits" class="nav-link">Buy credits</a>
+      <a href="/portal/terms" class="nav-link">Credit Terms</a>
+      <a href="/portal/logout" class="nav-btn-logout" style="background: #dc2626; color: #ffffff !important; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);" onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">Sign Out</a>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <div class="card">
+      <h1>My account</h1>
+      <p class="sub">Your signed-in details, license, credits, and recent purchases in one place.</p>
+
+      <!-- 4 Top Metric Cards -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">LOGIN EMAIL</div>
+          <div class="metric-value">{{ email }}</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">LICENSE KEY</div>
+          <div class="metric-value code-font">{{ license_key }}</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">AVAILABLE CREDITS</div>
+          <div class="metric-value large-num">{{ credits_balance }}</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">EARLIEST CREDIT EXPIRY</div>
+          <div class="metric-value">{{ earliest_expiry_str }}</div>
+        </div>
+      </div>
+
+      <!-- License Section -->
+      <h2 class="section-heading">License</h2>
+      <table class="data-table kv-table">
+        <tbody>
+          <tr>
+            <th>Email</th>
+            <td>{{ email }}</td>
+          </tr>
+          <tr>
+            <th>License key</th>
+            <td><code>{{ license_key }}</code></td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>{{ 'Active' if is_active else 'Inactive' }}</td>
+          </tr>
+          <tr>
+            <th>Term</th>
+            <td>{{ term or 'Lifetime' }}</td>
+          </tr>
+          <tr>
+            <th>Activated</th>
+            <td>{{ activated_str or 'Oct 5, 2026, 6:46 p.m.' }}</td>
+          </tr>
+          <tr>
+            <th>License expiry</th>
+            <td>{{ expiry_str or 'No expiry' }}</td>
+          </tr>
+          <tr>
+            <th>Days remaining</th>
+            <td>{{ days_remaining_str or 'Lifetime' }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Available credits by expiry -->
+      <h2 class="section-heading">Available credits by expiry</h2>
+      {% if lots and lots|length > 0 %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Purchased</th>
+            <th style="width: 25%;">Pack</th>
+            <th style="width: 25%;">Expires</th>
+            <th style="width: 25%;">Remaining</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for lot in lots %}
+          <tr>
+            <td>{{ lot.purchased_str }}</td>
+            <td>{{ lot.pack_name }}</td>
+            <td>{{ lot.expires_str }}</td>
+            <td><strong>{{ lot.remaining }}</strong></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="empty-txt">No available credits right now.</p>
+      {% endif %}
+
+      <!-- Recent purchases -->
+      <h2 class="section-heading">Recent purchases</h2>
+      {% if recent_purchases and recent_purchases|length > 0 %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Purchased</th>
+            <th>Pack</th>
+            <th>Credits</th>
+            <th>Paid</th>
+            <th>Expires</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for purchase in recent_purchases %}
+          <tr>
+            <td>{{ purchase.purchased_str }}</td>
+            <td>{{ purchase.pack_sku }}</td>
+            <td>{{ purchase.credits_qty }}</td>
+            <td>${{ purchase.paid_usd }}</td>
+            <td>{{ purchase.expires_str }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="empty-txt">No pack purchases recorded yet.</p>
+      {% endif %}
+
+      <!-- Used credits -->
+      <h2 class="section-heading">Used credits</h2>
+      {% if used_credits and used_credits|length > 0 %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Solution</th>
+            <th>Consumed</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in used_credits %}
+          <tr>
+            <td>{{ row.solution_name }}</td>
+            <td>{{ row.consumed_str }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="empty-txt">No credits used yet.</p>
+      {% endif %}
+
+      <!-- Bottom Action Buttons -->
+      <div class="actions-bar">
+        <a class="btn-buy-green" href="/portal/credits">Buy credits</a>
+        <a class="btn-secondary-pill" href="/portal/credits/ledger">Credit ledger</a>
+        <a class="btn-secondary-pill" href="/portal/marketplace">Back to Marketplace</a>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

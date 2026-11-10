@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open your account &mdash; Quantellix AI</title>
+  <link rel="icon" href="/static/images/quantellix-logo-dark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f1f5f9;
+      min-height: 100vh;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Dark Navbar (Matching Marketplace) */
+    .top-nav {
+      background: #091428;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      filter: brightness(0) invert(1);
+      height: 44px;
+      display: block;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .nav-credits {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .nav-credits strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Main Content Area */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 1rem 48px;
+    }
+
+    /* Top Green Toast Alert Banner */
+    .top-toast-banner {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      color: #15803d;
+      font-size: 13.5px;
+      font-weight: 500;
+      margin-bottom: 18px;
+      width: 100%;
+      max-width: 580px;
+    }
+
+    /* Elevated White Card */
+    .account-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.25rem 2.5rem;
+      max-width: 580px;
+      width: 100%;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e2e8f0;
+    }
+
+    h1.card-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-bottom: 9px;
+      line-height: 1.25;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .card-subtitle strong, .card-subtitle b {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    /* Key Issued / Existing Account Hint Box */
+    .hint-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+
+    .hint-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 4px;
+    }
+
+    .hint-key-code {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #1d4ed8;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .hint-email {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+
+    .hint-email strong {
+      color: #0f172a;
+    }
+
+    .hint-sub {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
+
+    .key-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-activate-now {
+      padding: 8px 16px;
+      background: #059669;
+      color: #ffffff;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-activate-now:hover {
+      background: #047857;
+    }
+
+    .btn-copy-key, .btn-auto-activate {
+      padding: 8px 14px;
+      background: #f1f5f9;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-copy-key:hover, .btn-auto-activate:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label.field-label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 7px;
+    }
+
+    input.text-input {
+      width: 100%;
+      padding: 11px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-family: inherit;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input.text-input::placeholder {
+      color: #94a3b8;
+    }
+
+    input.text-input:focus {
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+    }
+
+    /* Actions Row */
+    .actions-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-create {
+      padding: 10.5px 22px;
+      background: #059669;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn-create:hover {
+      background: #047857;
+    }
+
+    .btn-create:active {
+      transform: scale(0.99);
+    }
+
+    .btn-activate {
+      padding: 10.5px 20px;
+      background: #f1f5f9;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-activate:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+
+    .error-msg {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Dark Navbar (Matching Marketplace) -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="/portal/marketplace" class="logo-link" title="Quantellix Marketplace">
+        <img src="/static/images/quantellix-logo-dark.png?v=2.0" alt="Quantellix" class="logo-img">
+      </a>
+    </div>
+    <nav class="nav-right">
+      <span class="nav-credits">Credits: <strong>0</strong></span>
+      <a href="/portal/marketplace" class="nav-link">Marketplace</a>
+      <a href="/portal/account" class="nav-link">My Account</a>
+      <a href="/portal/credits" class="nav-link">Buy Credits</a>
+      <a href="/portal/terms" class="nav-link">Credit Terms</a>
+      <a href="/portal/logout" class="nav-btn-logout" style="background: #dc2626; color: #ffffff !important; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);" onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">Sign Out</a>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+
+    {% if success_msg %}
+    <div class="top-toast-banner">
+      {{ success_msg }}
+    </div>
+    {% endif %}
+
+    <div class="account-card">
+      <h1 class="card-title">Open your account</h1>
+      <p class="card-subtitle">
+        Free <strong>lifetime</strong> license &mdash; no annual fee. After you activate, buy solution credits (packs of 1 / 3 / 5 / 10) whenever you need to run analyses.
+      </p>
+
+      {% if error_msg %}
+      <div class="error-msg">
+        {{ error_msg }}
+      </div>
+      {% endif %}
+
+      {% if issued_key %}
+      <div class="hint-banner">
+        <div class="hint-title">Your lifetime activation key</div>
+        <div class="hint-key-code" id="issued-key">{{ issued_key }}</div>
+        <div class="hint-email">Email: <strong>{{ issued_email }}</strong></div>
+        <div class="hint-sub">Save this key now &mdash; you need it, with this email, every time you activate.</div>
+        
+        <div class="key-actions-row">
+          <a class="btn-activate-now" href="/license?email={{ issued_email }}&key={{ issued_key }}">Activate now &rarr;</a>
+          <button class="btn-copy-key" type="button" id="copy-btn">Copy key</button>
+          <a class="btn-auto-activate" href="/portal/auto-activate?email={{ issued_email }}&key={{ issued_key }}">Activate in this browser</a>
+        </div>
+      </div>
+
+      <script>
+        document.getElementById('copy-btn')?.addEventListener('click', function() {
+          var key = document.getElementById('issued-key').innerText.trim();
+          navigator.clipboard.writeText(key).then(function() {
+            var b = document.getElementById('copy-btn');
+            b.innerText = 'Copied!';
+            setTimeout(function() { b.innerText = 'Copy key'; }, 2000);
+          });
+        });
+      </script>
+      {% endif %}
+
+      <form method="POST" action="/portal/open-account">
+        <div class="form-group">
+          <label class="field-label" for="email">Work email</label>
+          <input class="text-input" id="email" type="email" name="email" required placeholder="you@company.com" value="{{ issued_email or '' }}" />
+        </div>
+        
+        <div class="actions-row">
+          <button class="btn-create" type="submit">Create lifetime license</button>
+          <a class="btn-activate" href="/license">Already have a key? Activate</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>
